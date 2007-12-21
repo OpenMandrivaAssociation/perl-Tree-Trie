@@ -17,6 +17,7 @@ BuildRequires:	perl-devel
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildArch:	    noarch
+BuildRoot:	    %{_tmppath}/%{name}-%{version}
 
 %description
 This module implements a trie data structure.  The term "trie"
