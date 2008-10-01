@@ -1,7 +1,7 @@
 %define module	Tree-Trie
 %define name	perl-%{module}
 %define version 1.5
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name:		    %{name}
 Version:	    %{version}
@@ -14,8 +14,8 @@ Source:		    http://www.cpan.org/modules/by-module/Tree/%{module}-%{version}.tar
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
-BuildRequires:	perl(Test::Pod)
-BuildRequires:	perl(Test::Pod::Coverage)
+#BuildRequires:	perl(Test::Pod)
+#BuildRequires:	perl(Test::Pod::Coverage)
 BuildArch:	    noarch
 BuildRoot:	    %{_tmppath}/%{name}-%{version}
 
@@ -48,6 +48,8 @@ an array reference (if appropriate).
 
 %prep
 %setup -q -n %{module}-%{version} 
+
+rm -f t/01_pod.t t/02_pod_cover.t
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
