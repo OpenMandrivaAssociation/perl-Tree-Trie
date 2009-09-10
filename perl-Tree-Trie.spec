@@ -1,23 +1,25 @@
-%define module	Tree-Trie
-%define name	perl-%{module}
-%define version 1.5
-%define release %mkrel 5
+%define upstream_name	 Tree-Trie
+%define upstream_version 1.5
 
-Name:		    %{name}
-Version:	    %{version}
-Release:	    %{release}
-Summary:	    A data structure optimized for prefix lookup
-License:	    GPL
-Group:		    Development/Perl
-URL:		    http://search.cpan.org/dist/%{module}
-Source:		    http://www.cpan.org/modules/by-module/Tree/%{module}-%{version}.tar.bz2
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:	A data structure optimized for prefix lookup
+License:	GPL
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Tree/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
-#BuildRequires:	perl(Test::Pod)
-#BuildRequires:	perl(Test::Pod::Coverage)
+BuildRequires:	perl(Pod::Coverage)
+BuildRequires:	perl(Test::Pod)
+BuildRequires:	perl(Test::Pod::Coverage)
+
 BuildArch:	    noarch
-BuildRoot:	    %{_tmppath}/%{name}-%{version}
+BuildRoot:	    %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module implements a trie data structure.  The term "trie"
@@ -47,9 +49,8 @@ that is, if you call lookup() with an array reference, the return value will be
 an array reference (if appropriate).
 
 %prep
-%setup -q -n %{module}-%{version} 
-
-rm -f t/01_pod.t t/02_pod_cover.t
+%setup -q -n %{upstream_name}-%{upstream_version}
+rm -f t/02_pod_cover.t
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -70,4 +71,3 @@ rm -rf %{buildroot}
 %doc Changes README
 %{perl_vendorlib}/Tree
 %{_mandir}/*/*
-
