@@ -1,5 +1,5 @@
 %define upstream_name	 Tree-Trie
-%define upstream_version 1.6
+%define upstream_version 1.7
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
