@@ -1,9 +1,9 @@
 %define upstream_name	 Tree-Trie
 %define upstream_version 1.8
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
 Summary:	A data structure optimized for prefix lookup
 License:	GPL
@@ -11,15 +11,12 @@ Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Tree/%{upstream_name}-%{upstream_version}.tar.gz
 
-%if %{mdkversion} < 1010
 BuildRequires:	perl-devel
-%endif
 BuildRequires:	perl(Pod::Coverage)
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 
-BuildArch:	    noarch
-BuildRoot:	    %{_tmppath}/%{name}-%{version}-%{release}
+BuildArch:	noarch
 
 %description
 This module implements a trie data structure.  The term "trie"
@@ -53,21 +50,75 @@ an array reference (if appropriate).
 rm -f t/02_pod_cover.t
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
-%{__make} test
+make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean 
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{perl_vendorlib}/Tree
 %{_mandir}/*/*
+
+
+%changelog
+* Mon May 09 2011 Guillaume Rousse <guillomovitch@mandriva.org> 1.800.0-1mdv2011.0
++ Revision: 672881
+- update to new version 1.8
+
+* Sat Nov 06 2010 Guillaume Rousse <guillomovitch@mandriva.org> 1.700.0-1mdv2011.0
++ Revision: 594310
+- update to new version 1.7
+
+* Tue Jul 13 2010 Jérôme Quelin <jquelin@mandriva.org> 1.600.0-1mdv2011.0
++ Revision: 552692
+- update to 1.6
+
+* Thu Sep 10 2009 Jérôme Quelin <jquelin@mandriva.org> 1.500.0-1mdv2010.0
++ Revision: 437260
+- rebuild using %%perl_convert_version
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - nuke borked tests
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Wed Aug 22 2007 Guillaume Rousse <guillomovitch@mandriva.org> 1.5-1mdv2008.0
++ Revision: 69251
+- update to new version 1.5
+
+* Wed May 02 2007 Olivier Thauvin <nanardon@mandriva.org> 1.3-1mdv2008.0
++ Revision: 20768
+- 1.3
+
+
+* Thu Aug 31 2006 Guillaume Rousse <guillomovitch@mandriva.org> 1.2-2mdv2007.0
+- buildrequires perl(Test::Pod)
+
+* Mon Jul 10 2006 Guillaume Rousse <guillomovitch@mandriva.org> 1.2-1mdv2007.0
+- New version 1.2
+
+* Thu Oct 20 2005 Guillaume Rousse <guillomovitch@mandriva.org> 1.1-3mdk
+- oops, fixed descript line length
+
+* Thu Oct 20 2005 Guillaume Rousse <guillomovitch@mandriva.org> 1.1-2mdk
+- %%mkrel
+- spec cleanup
+- fix directory ownership
+- test in %%check
+- better summary
+- reformat description
+
+* Thu Jul 14 2005 Oden Eriksson <oeriksson@mandriva.com> 1.1-1mdk
+- initial Mandriva package
+
