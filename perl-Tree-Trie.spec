@@ -1,15 +1,15 @@
 %define upstream_name	 Tree-Trie
-%define upstream_version 1.8
+%define upstream_version 1.9
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	2
+Version:	%perl_convert_version 1.9
+Release:	1
 
 Summary:	A data structure optimized for prefix lookup
 License:	GPL
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Tree/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Tree/Tree-Trie-1.9.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(Pod::Coverage)
@@ -121,4 +121,5 @@ make test
 
 * Thu Jul 14 2005 Oden Eriksson <oeriksson@mandriva.com> 1.1-1mdk
 - initial Mandriva package
+
 
