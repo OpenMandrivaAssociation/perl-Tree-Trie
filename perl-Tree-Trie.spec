@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version 1.9
-Release:	1
+Release:	2
 
 Summary:	A data structure optimized for prefix lookup
 License:	GPL
