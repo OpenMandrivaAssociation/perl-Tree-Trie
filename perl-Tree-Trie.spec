@@ -8,7 +8,7 @@ Release:	3
 Summary:	A data structure optimized for prefix lookup
 License:	GPL
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}
+Url:		https://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Tree/Tree-Trie-1.9.tar.gz
 
 BuildRequires:	perl-devel
